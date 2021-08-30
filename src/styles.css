@@ -1,0 +1,89 @@
+:root {
+  --background: rgb(169, 214, 205);
+  --dark: rgb(52, 52, 61);
+  --light: aliceblue;
+}
+
+.App {
+  background-color: var(--background);
+}
+
+h1 {
+  font-family: myriad-pro, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: myriad-pro, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2.4rem;
+  line-height: 0.4rem;
+}
+
+h3 {
+  font-family: myriad-pro, sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 0.1rem;
+}
+
+body {
+  background-color: rgb(169, 214, 205);
+}
+
+#title {
+  background-color: var(--background);
+  color: var(--dark);
+}
+
+#title span {
+  color: aliceblue;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.main {
+  background-color: var(--background);
+}
+
+input {
+  border-style: none;
+  background-color: var(--light);
+  font-family: myriad-pro, sans-serif;
+  font-weight: 200;
+  color: --light;
+}
+
+#btn {
+  text-transform: lowercase;
+  background-color: var(--dark);
+  font-family: myriad-pro, sans-serif;
+  font-weight: 100;
+  color: aliceblue;
+}
+
+#weatherContainer {
+  margin: 2rem;
+  background-color: var(--background);
+  border-style: solid;
+  border-color: var(--dark);
+  border-radius: 10px;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#weatherInfo {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  font-family: myriad-pro, sans-serif;
+  font-weight: 700;
+  text-align: left;
+  text-transform: lowercase;
+}

@@ -1,15 +1,18 @@
 import React from "react";
 import "../styles.css";
-import moment from "moment";
+// import moment from "moment";
 
 const Dashboard = ({ weatherData }) => (
-  <div className="weather">
-    <div className="header">Current weather in {weatherData.name}</div>
-    <div className="details">
-      <p>Temperature: {weatherData.main.temp} </p>
-      <p>{weatherData.weather[0].description}</p>
-      <p>Day: {moment().format("dddd")}</p>
-      <p>Date: {moment().format("LL")}</p>
+  <div id="weatherContainer">
+    <div id="weatherInfo">
+      <h2>{weatherData.name}</h2>
+      <h2> {weatherData.main.temp.toFixed(0)} f</h2>
+      <h3>
+        {" "}
+        max {weatherData.main.temp_max.toFixed(0)} / min{" "}
+        {weatherData.main.temp_min.toFixed(0)}
+      </h3>
+      <h3>humidity {weatherData.main.humidity}%</h3>
     </div>
   </div>
 );

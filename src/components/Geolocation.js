@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 export default function Geo() {
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
-  const [data, setData] = useState([]);
+  const [geo, setGeo] = useState([]);
 
   const handleClick = () => {
     const fetchData = async () => {
@@ -18,14 +18,14 @@ export default function Geo() {
       )
         .then((res) => res.json())
         .then((result) => {
-          setData(result);
+          setGeo(result);
           console.log(result);
         });
     };
     fetchData();
   };
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="geoContainer">
@@ -33,12 +33,13 @@ export default function Geo() {
         Get local conditions
       </button>
       <div className="dashboard">
-        {typeof data.main != "undefined" ? (
-          <Dashboard weatherData={data} />
+        {typeof geo.main != "undefined" ? (
+          <Dashboard geoData={geo} />
         ) : (
           <div></div>
         )}
       </div>
+      <div className="icon"></div>
       <div></div>
     </div>
   );

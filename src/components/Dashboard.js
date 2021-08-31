@@ -1,9 +1,12 @@
 import React from "react";
 import "../styles.css";
-// import moment from "moment";
 
 const Dashboard = ({ weatherData }) => (
   <div id="weatherContainer">
+    {/* <div>
+      {" "}
+      <img id="icon" src={Icon.icons} alt="sun" />
+    </div> */}
     <div id="weatherInfo">
       <h2>{weatherData.name}</h2>
       <h2> {weatherData.main.temp.toFixed(0)} f</h2>

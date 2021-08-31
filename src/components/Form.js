@@ -4,8 +4,28 @@ import Dashboard from "./Dashboard";
 export default function Form() {
   const [name, setName] = useState("seattle");
   const [data, setData] = useState([]);
-  // let [loading, setLoading] = useState(false);
-  // let [error, setError] = useState(false);
+
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
+
+  const handleClick = () => {
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+
+      await fetch(
+        `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          setData(result);
+          console.log(result);
+        });
+    };
+    fetchData();
+  };
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -13,11 +33,7 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (name.length === 0) {
-    //   return setError(true);
-    // }
 
-    // setLoading(true);
     fetch(
       `${process.env.REACT_APP_API_URL}/weather?q=${name}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
     )
@@ -36,7 +52,10 @@ export default function Form() {
         <label>
           <input type="text" value={name} name="city" onChange={handleChange} />
         </label>
-        <input type="submit" value="Search" id="btn" />
+        <input type="submit" value="Search" id="btn" />{" "}
+        <button onClick={handleClick} id="geoBtn">
+          Get local conditions
+        </button>
       </form>
       <div className="dashboard">
         {typeof data.main != "undefined" ? (

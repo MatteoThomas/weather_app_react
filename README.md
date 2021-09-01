@@ -22,7 +22,7 @@ Desktop styling
 
 # Links
 
-Deployed App[Weatherize](https://matteothomas.github.io/weather_app_react/)
+Deployed App[Weatherize](https://quirky-hermann-a6ee0b.netlify.app/)
 
 Github Repo [Weatherize](https://github.com/MatteoThomas/weather_app_react)
 

@@ -11,25 +11,54 @@ import thunderstorm from "../img/11d.svg";
 import snow from "../img/13d.svg";
 import mist from "../img/50d.svg";
 
-export default function Icon({ weatherData }) {
-  let iconData = weatherData.weather[0].icon;
+export default function Icon({ iconData }) {
   console.log(iconData);
+  let iconed = null;
   switch (iconData) {
     case "01d":
-      var icons = sun;
+      console.log("yes!01d");
+      iconed = sun;
       break;
     case "02d":
-      var icons = cloud;
+      console.log("yes!02d");
+      iconed = cloud;
       break;
     case "03d":
-      var icons = clouds;
+      console.log("yes!03d");
+      iconed = clouds;
       break;
     case "04d":
-      var icons = cloudy;
+      console.log("yes! on the 04d");
+      iconed = cloudy;
       break;
+    case "09d":
+      console.log("yes! on the 09d");
+      iconed = shower;
+      break;
+    case "10d":
+      console.log("yes! on the 10d");
+      iconed = rain;
+      break;
+    case "11d":
+      console.log("yes! on the 11d");
+      iconed = thunderstorm;
+      break;
+    case "13d":
+      console.log("yes! on 13d");
+      iconed = snow;
+      break;
+    case "50d":
+      console.log("yes! on 50d");
+      iconed = mist;
+      break;
+
     default:
-      icons = mist;
+      console.log("default!");
   }
 
-  return <div></div>;
+  return (
+    <div id="icon">
+      <img src={iconed} alt="weather icon!" />
+    </div>
+  );
 }

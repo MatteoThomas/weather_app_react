@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import Dashboard from "./Dashboard";
 
 export default function Form() {
+  // state for city name
   const [name, setName] = useState("seattle");
+  // state for all data
   const [data, setData] = useState([]);
+  // state for icon
   const [icon, setIcon] = useState([]);
+  // state for latitude
   const [lat, setLat] = useState([]);
+  // state for longitude
   const [long, setLong] = useState([]);
 
-  console.log(icon);
-
+  // gets geolocation of user for local weather
   const handleClick = () => {
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -22,11 +26,11 @@ export default function Form() {
       )
         .then((res) => res.json())
         .then((result) => {
-          // setIcon(result.weather[0].icon);
+          // set icon state as result
           setData(result);
-
+          // set icons as the icon from the returned data
           let icons = result.weather[0].icon;
-          console.log(icons);
+          // set icons as state
           setIcon(icons);
         });
     };
@@ -37,23 +41,21 @@ export default function Form() {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    fetch(
+    await fetch(
       `${process.env.REACT_APP_API_URL}/weather?q=${name}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
     )
       .then((res) => res.json())
       .then((result) => {
         setData(result);
-        setIcon(result);
+        // setIcon(result);
         let icons = result.weather[0].icon;
-        console.log(icons);
+        // set icons as state
         setIcon(icons);
+        console.log(icons);
       });
   };
-
-  console.log(data);
 
   return (
     <div className="main">

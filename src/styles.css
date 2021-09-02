@@ -59,7 +59,7 @@ input {
 }
 
 #btn,
-#geoBtn {
+#localBtn {
   border-style: none;
   text-transform: lowercase;
   background-color: var(--dark);

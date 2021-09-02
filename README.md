@@ -16,7 +16,7 @@ Open Weather API
 
 # Known Issues
 
-The local weather API sometimes takes clicking the button multiple times or gives errors.
+The local weather sometimes takes clicking the button multiple times or gives errors.
 
 # Future Development
 

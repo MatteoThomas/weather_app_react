@@ -13,62 +13,62 @@ import mist from "../img/50n.svg";
 
 export default function Icon({ iconData }) {
   // create variable for icon
-  let iconed = null;
-  // chose icon based on the icon returned in Form.js
+  let iconName = null;
+  // choose icon based on the icon returned in Form.js
   switch (iconData) {
     case "01d":
-      iconed = sun;
+      iconName = sun;
       break;
     case "01n":
-      iconed = sun;
+      iconName = sun;
       break;
     case "02d":
-      iconed = cloud;
+      iconName = cloud;
       break;
     case "02n":
-      iconed = cloud;
+      iconName = cloud;
       break;
     case "03d":
-      iconed = clouds;
+      iconName = clouds;
       break;
     case "03n":
-      iconed = clouds;
+      iconName = clouds;
       break;
     case "04d":
-      iconed = cloudy;
+      iconName = cloudy;
       break;
     case "04n":
-      iconed = cloudy;
+      iconName = cloudy;
       break;
     case "09d":
-      iconed = shower;
+      iconName = shower;
       break;
     case "09n":
-      iconed = shower;
+      iconName = shower;
       break;
     case "10d":
-      iconed = rain;
+      iconName = rain;
       break;
     case "10n":
-      iconed = rain;
+      iconName = rain;
       break;
     case "11d":
-      iconed = thunderstorm;
+      iconName = thunderstorm;
       break;
     case "11n":
-      iconed = thunderstorm;
+      iconName = thunderstorm;
       break;
     case "13d":
-      iconed = snow;
+      iconName = snow;
       break;
     case "13n":
-      iconed = snow;
+      iconName = snow;
       break;
     case "50d":
-      iconed = mist;
+      iconName = mist;
       break;
     case "50n":
-      iconed = mist;
+      iconName = mist;
       break;
     default:
       console.log("default!");
@@ -76,7 +76,7 @@ export default function Icon({ iconData }) {
 
   return (
     <div id="icon">
-      <img src={iconed} alt="weather icon!" />
+      <img src={iconName} alt="weather icon" />
     </div>
   );
 }

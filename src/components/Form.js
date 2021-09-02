@@ -3,14 +3,13 @@ import Dashboard from "./Dashboard";
 
 export default function Form() {
   // state for city name
-  const [name, setName] = useState("seattle");
-  // state for all data
+  const [name, setName] = useState("denver");
+  // state for all data = weatherData
   const [data, setData] = useState([]);
   // state for icon
   const [icon, setIcon] = useState([]);
-  // state for latitude
+  // state for latitude, longitude
   const [lat, setLat] = useState([]);
-  // state for longitude
   const [long, setLong] = useState([]);
 
   // gets geolocation of user for local weather
@@ -26,7 +25,7 @@ export default function Form() {
       )
         .then((res) => res.json())
         .then((result) => {
-          // set icon state as result
+          // set data state as result
           setData(result);
           // set icons as the icon from the returned data
           let icons = result.weather[0].icon;
@@ -38,6 +37,7 @@ export default function Form() {
   };
 
   const handleChange = (e) => {
+    // sets state of city name
     setName(e.target.value);
   };
 
@@ -53,6 +53,7 @@ export default function Form() {
         let icons = result.weather[0].icon;
         // set icons as state
         setIcon(icons);
+        // name of the .png from OpenWeather
         console.log(icons);
       });
   };
@@ -63,12 +64,13 @@ export default function Form() {
         <label>
           <input type="text" value={name} name="city" onChange={handleChange} />
         </label>
-        <input type="submit" value="Search" id="btn" />{" "}
-        <button onClick={handleClick} id="geoBtn">
+        <input type="submit" value="Find" id="btn" />{" "}
+        <button onClick={handleClick} id="localBtn">
           Local weather
         </button>
       </form>
       <div className="dashboard">
+        {/* renders only if there's data from OpenWeather */}
         {typeof data.main != "undefined" ? (
           <Dashboard weatherData={data} iconData={icon} />
         ) : (

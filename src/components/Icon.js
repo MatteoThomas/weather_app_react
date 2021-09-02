@@ -49,7 +49,7 @@ export default function Icon({ iconData }) {
     case "10d":
       iconed = rain;
       break;
-    case "10b":
+    case "10n":
       iconed = rain;
       break;
     case "11d":

@@ -5,7 +5,6 @@ import Icon from "./Icon";
 const Dashboard = ({ weatherData, iconData }) => (
   <div id="weatherContainer">
     <Icon iconData={iconData} />
-
     <div id="weatherInfo">
       <h2>{weatherData.name}</h2>
       <h2> {weatherData.main.temp.toFixed(0)} f</h2>

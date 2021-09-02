@@ -6,6 +6,9 @@
 
 .App {
   background-color: var(--background);
+  margin: auto;
+  max-width: 460px;
+  min-width: 400px;
 }
 
 h1 {
@@ -69,7 +72,7 @@ input {
 }
 
 #weatherContainer {
-  margin: 2rem;
+  margin: 2.5rem;
   background-color: var(--background);
   border-style: solid;
   border-color: var(--dark);
@@ -81,10 +84,8 @@ input {
 }
 
 #icon {
-  width: 200px;
-  position: absolute;
-  top: 15rem;
-  left: 5.4rem;
+  width: 280px;
+  margin: auto;
 }
 
 #weatherInfo {

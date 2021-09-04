@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
 
 export default function Form() {
   // state for city name
-  const [name, setName] = useState("denver");
+  const [name, setName] = useState("");
   // state for all data = weatherData
   const [data, setData] = useState([]);
-  // state for icon
-  const [icon, setIcon] = useState([]);
   // state for latitude, longitude
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
+  // set loading state
+  const [isLoading, setIsLoading] = useState(true);
+  // set error state
+  const [error, setError] = useState(false);
 
   // gets geolocation of user for local weather
-  const handleClick = () => {
+  useEffect(() => {
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(function (position) {
         setLat(position.coords.latitude);
@@ -27,14 +29,14 @@ export default function Form() {
         .then((result) => {
           // set data state as result
           setData(result);
-          // set icons as the icon from the returned data
-          let icons = result.weather[0].icon;
-          // set icons as state
-          setIcon(icons);
+          // set loading state false
+          setIsLoading(false);
+          // set error to false
+          setError(false);
         });
     };
     fetchData();
-  };
+  }, [lat, long]);
 
   const handleChange = (e) => {
     // sets state of city name
@@ -42,6 +44,7 @@ export default function Form() {
   };
 
   const handleSubmit = async (e) => {
+    setError(false);
     e.preventDefault();
     await fetch(
       `${process.env.REACT_APP_API_URL}/weather?q=${name}&APPID=${process.env.REACT_APP_API_KEY}&units=imperial`
@@ -49,13 +52,12 @@ export default function Form() {
       .then((res) => res.json())
       .then((result) => {
         setData(result);
-        // setIcon(result);
-        let icons = result.weather[0].icon;
-        // set icons as state
-        setIcon(icons);
-        // name of the .png from OpenWeather
-        console.log(icons);
       });
+    handleSubmit().catch((e) => {
+      console.log("ERRRORR!");
+      // set error to true
+      setError(true);
+    });
   };
 
   return (
@@ -64,17 +66,18 @@ export default function Form() {
         <label>
           <input type="text" value={name} name="city" onChange={handleChange} />
         </label>
-        <input type="submit" value="Find" id="btn" />{" "}
-        <button onClick={handleClick} id="localBtn">
-          Local weather
-        </button>
       </form>
       <div className="dashboard">
+        {isLoading && <h2>Loading...</h2>}
+
         {/* renders only if there's data from OpenWeather */}
         {typeof data.main != "undefined" ? (
-          <Dashboard weatherData={data} iconData={icon} />
+          <Dashboard weatherData={data} />
         ) : (
-          <div></div>
+          <div>
+            {error && <h2>City not found</h2>}
+            {!error && <h2></h2>}
+          </div>
         )}
       </div>
     </div>

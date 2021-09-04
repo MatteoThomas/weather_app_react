@@ -22,13 +22,11 @@ The local weather sometimes takes clicking the button multiple times or gives er
 
 Error handling
 
-Icons need to stay centered and darkened
+Icons darkened
 
 Animated icons
 
 5-day forecast
-
-Desktop styling
 
 # Contributors
 

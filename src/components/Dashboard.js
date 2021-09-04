@@ -2,9 +2,9 @@ import React from "react";
 import "../styles.css";
 import Icon from "./Icon";
 
-const Dashboard = ({ weatherData, iconData }) => (
+const Dashboard = ({ weatherData }) => (
   <div id="weatherContainer">
-    <Icon iconData={iconData} />
+    <Icon iconData={weatherData.weather[0].icon} />
     <div id="weatherInfo">
       <h2>{weatherData.name}</h2>
       <h2> {weatherData.main.temp.toFixed(0)} f</h2>
